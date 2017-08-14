@@ -1,0 +1,24 @@
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  appenders:
+      - type: file
+        threshold: DEBUG
+        archive: true
+        timeZone: IST
+        logFormat: "%highlight(%-5level) [%X{sessionId}] [%date] [%thread] [%cyan(%logger{0})]: %message%n"
+        currentLogFilename: /var/log/dropwizard-basic/dropwizard-basic.log
+        archivedLogFilenamePattern: /var/log/dropwizard-basic/dropwizard-basic-%d{yyyy-MM-dd}.log.gz
+        archivedFileCount: 30
+
+applicationDatabase:
+  # the name of your JDBC driver
+  driverClass: com.mysql.jdbc.Driver
+  # the username
+  user: root
+  password:
+  # the JDBC URL
+  url: jdbc:mysql://localhost:3306/dropwizard-basic
+  properties:
+    hibernate.dialect: org.hibernate.dialect.MySQLDialect
+    hibernate.show_sql: true
